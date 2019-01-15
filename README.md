@@ -51,28 +51,28 @@
 * ## Projeto
 	* ### Especificações técnicas
 		* **Linguagem de programação:** Java - jdk1.8.0_152 ou superior
-    	* **Gerenciador de dependências:** apache-maven-3.0.4
-    	* **Spring:** 2.1.1.RELEASE
-        * **Banco de dados:** H2 database - http://localhost:8080/h2
+    		* **Gerenciador de dependências:** apache-maven-3.0.4
+    		* **Spring:** 2.1.1.RELEASE
+        	* **Banco de dados:** H2 database - http://localhost:8080/h2
 	
-    * ### Documentação
-    	* **Swagger**: [petstore.yaml](etc/petstore.yaml)
+	* ### Documentação
+    		* **Swagger**: [petstore.yaml](etc/petstore.yaml)
         
 	* ### Modelagem    
   	![modelagem](etc/modelagem.png)
 
 	* ### Representações
 	
-    	Os modelos de entrada e saída são representados no formato JSON. Pacote para importação no **Postman** [PetStore.postman_collection.json](etc/PetStore.postman_collection.json)
+    		Os modelos de entrada e saída são representados no formato JSON. Pacote para importação no **Postman** [PetStore.postman_collection.json](etc/PetStore.postman_collection.json)
     
-      * **Cliente** 
+      		* **Cliente** 
       
-      	*ClienteRequestDTO*
-      	```json
-        {
-          "nome": "Pedro"
-        }              
-        ```    
+      			*ClienteRequestDTO*
+      			```json
+        		{
+          		"nome": "Pedro"
+        		}              
+        		```    
       
         *ClienteResponseDTO*
         ```json
