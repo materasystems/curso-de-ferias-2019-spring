@@ -1,4 +1,4 @@
-# 4ª edição Curso de Férias 2019 - Construindo APIs REST com Spring
+## 4ª edição Curso de Férias 2019 - Construindo APIs REST com Spring
 
 ```
 
