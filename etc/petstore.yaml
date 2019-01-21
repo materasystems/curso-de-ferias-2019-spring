@@ -1,0 +1,570 @@
+swagger: '2.0'
+info:
+  description: 4ª edição Curso de Férias 2019 - Construindo APIs REST com Spring
+  version: 1.0.0
+  title: Pet Store
+host: 'localhost:8080'
+basePath: /api/v1
+tags:
+  - name: cliente
+    description: Cadastro de clientes
+  - name: especie
+    description: Cadastro de domínios de espécies
+  - name: pet
+    description: Cadastro de pets
+  - name: servico
+    description: Cadastro de serviços
+schemes:
+  - http
+paths:
+  /clientes:
+    post:
+      tags:
+        - cliente
+      summary: Cria um novo cliente
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: ClienteRequestDTO
+          required: true
+          schema:
+            $ref: '#/definitions/ClienteRequestDTO'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+    get:
+      tags:
+        - cliente
+      summary: Busca todos os clientes
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ClienteResponseDTO'
+  '/clientes/{id}':
+    get:
+      tags:
+        - cliente
+      summary: Busca pelo cliente informado no parâmetro
+      parameters:
+        - name: id
+          in: path
+          description: Identificador do cliente
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ClienteResponseDTO'
+        '404':
+          description: 'Cliente {id} não encontrado!'
+    put:
+      tags:
+        - cliente
+      summary: Atualiza um cliente existente
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: Identificador do cliente
+          required: true
+          type: integer
+        - in: body
+          name: ClienteRequestDTO
+          required: true
+          schema:
+            $ref: '#/definitions/ClienteRequestDTO'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '404':
+          description: 'Cliente {id} não encontrado!'
+    delete:
+      tags:
+        - cliente
+      summary: Apaga um cliente existente
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: Identificador do cliente
+          required: true
+          type: integer
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: 'Cliente {id} não pode ser excluído pois possui Pets!'
+        '404':
+          description: 'Cliente {id} não encontrado!'
+  '/clientes/{id}/pets':
+    get:
+      tags:
+        - cliente
+      summary: Busca os pets do cliente informado no parâmetro
+      parameters:
+        - name: id
+          in: path
+          description: Identificador do cliente
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PetResponseDTO'
+        '404':
+          description: 'Cliente {id} não encontrado!'
+  /especies:
+    post:
+      tags:
+        - especie
+      summary: Cria uma nova espécie
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: EspecieRequestDTO
+          required: true
+          schema:
+            $ref: '#/definitions/EspecieRequestDTO'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+    get:
+      tags:
+        - especie
+      summary: Busca todas as espécies
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/EspecieResponseDTO'
+  '/especies/{id}':
+    get:
+      tags:
+        - especie
+      summary: Busca pela espécie informada no parâmetro
+      parameters:
+        - name: id
+          in: path
+          description: Identificador da espécie
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/EspecieResponseDTO'
+        '404':
+          description: 'Espécie {id} não encontrada!'
+    put:
+      tags:
+        - especie
+      summary: Atualiza uma espécie existente
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: Identificador da espécie
+          required: true
+          type: integer
+        - in: body
+          name: EspecieRequestDTO
+          required: true
+          schema:
+            $ref: '#/definitions/EspecieRequestDTO'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '404':
+          description: 'Espécie {id} não encontrada!'
+    delete:
+      tags:
+        - especie
+      summary: Apaga uma espécie existente
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: Identificador da espécie
+          required: true
+          type: integer
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: 'Espécie {id} não pode ser excluída pois possui Pets!'
+        '404':
+          description: 'Espécie {id} não encontrada!'
+  '/especies/{id}/pets':
+    get:
+      tags:
+        - especie
+      summary: Busca os pets da espécie informada no parâmetro
+      parameters:
+        - name: id
+          in: path
+          description: Identificador da espécie
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PetResponseDTO'
+        '404':
+          description: 'Espécie {id} não encontrada!'
+  /pets:
+    post:
+      tags:
+        - pet
+      summary: Cria um novo pet
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: PetRequestDTO
+          required: true
+          schema:
+            $ref: '#/definitions/PetRequestDTO'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '404':
+          description: 'Cliente {id} não encontrado!'
+    get:
+      tags:
+        - pet
+      summary: Busca todos os pets
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PetResponseDTO'
+  '/pets/{id}':
+    get:
+      tags:
+        - pet
+      summary: Busca pelo pet informado no parâmetro
+      parameters:
+        - name: id
+          in: path
+          description: Identificador do pet
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PetResponseDTO'
+        '404':
+          description: 'Pet {id} não encontrado!'
+    put:
+      tags:
+        - pet
+      summary: Atualiza um pet existente
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: Identificador do pet
+          required: true
+          type: integer
+        - in: body
+          name: PetRequestDTO
+          required: true
+          schema:
+            $ref: '#/definitions/PetRequestDTO'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '404':
+          description: 'Pet {id} não encontrado!'
+    delete:
+      tags:
+        - pet
+      summary: Apaga um pet existente
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: Identificador do pet
+          required: true
+          type: integer
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: 'Pet {id} não pode ser excluído pois possui Serviços!'
+        '404':
+          description: 'Pet {id} não encontrado!'
+  '/pets/{id}/servicos':
+    get:
+      tags:
+        - pet
+      summary: Busca os serviços do pet informado no parâmetro
+      parameters:
+        - name: id
+          in: path
+          description: Identificador do pet
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ServicoResponseDTO'
+        '404':
+          description: 'Pet {id} não encontrado!'
+  /servicos:
+    post:
+      tags:
+        - servico
+      summary: Cria um novo serviço
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: ServicoRequestDTO
+          required: true
+          schema:
+            $ref: '#/definitions/ServicoRequestDTO'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '404':
+          description: 'Pet {id} não encontrado!'
+    get:
+      tags:
+        - servico
+      summary: Busca todos os serviços
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ServicoResponseDTO'
+  '/servicos/{id}':
+    get:
+      tags:
+        - servico
+      summary: Busca pelo serviço informado no parâmetro
+      parameters:
+        - name: id
+          in: path
+          description: Identificador do serviço
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ServicoResponseDTO'
+        '404':
+          description: 'Serviço {id} não encontrado!'
+    put:
+      tags:
+        - servico
+      summary: Atualiza um serviço existente
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: Identificador do serviço
+          required: true
+          type: integer
+        - in: body
+          name: ServicoRequestDTO
+          required: true
+          schema:
+            $ref: '#/definitions/ServicoRequestDTO'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '404':
+          description: 'Serviço {id} não encontrado!'
+    delete:
+      tags:
+        - servico
+      summary: Apaga um serviço existente
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: Identificador do serviço
+          required: true
+          type: integer
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: 'Pet {id} não pode ser excluído pois possui Serviços!'
+        '404':
+          description: 'Serviço {id} não encontrado!'
+  '/servicos/buscaPorData':
+    get:
+      tags:
+        - servico
+      summary: Busca serviços por um intervalo de datas informados por parâmetro
+      parameters:
+        - name: dataInicial
+          in: query
+          description: Data inicial
+          required: true
+          type: string
+        - name: dataFinal
+          in: query
+          description: Data final
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ServicoResponseDTO'
+        '404':
+          description: 'Serviço {id} não encontrado!'
+definitions:
+  ClienteRequestDTO:
+    type: object
+    required:
+      - nome
+    properties:
+      nome:
+        type: string
+  ClienteResponseDTO:
+    type: object
+    properties:
+      id:
+        type: integer
+      nome:
+        type: string
+  EspecieRequestDTO:
+    type: object
+    required:
+      - descricao
+    properties:
+      descricao:
+        type: string
+  EspecieResponseDTO:
+    type: object
+    properties:
+      id:
+        type: integer
+      descricao:
+        type: string
+  PetRequestDTO:
+    type: object
+    required:
+      - nome
+      - idCliente
+      - idEspecie
+    properties:
+      nome:
+        type: string
+      dataNascimento:
+        type: string
+        format: date
+      idCliente:
+        type: integer
+      idEspecie:
+        type: integer
+  PetResponseDTO:
+    type: object
+    properties:
+      id:
+        type: integer
+      nome:
+        type: string
+      dataNascimento:
+        type: string
+        format: date
+      cliente:
+        $ref: '#/definitions/ClienteResponseDTO'
+      especie:
+        $ref: '#/definitions/EspecieResponseDTO'
+  ServicoRequestDTO:
+    type: object
+    required:
+      - observacao
+      - idTipoServico
+      - valor
+      - idPet
+    properties:
+      observacao:
+        type: string
+      idTipoServico:
+        type: integer
+      valor:
+        type: number
+      idPet:
+        type: integer
+  ServicoResponseDTO:
+    type: object
+    properties:
+      id:
+        type: integer
+      observacao:
+        type: string
+      dataHora:
+        type: string
+        format: date_time
+      tipoServico:
+        type: string
+      valor:
+        type: number
+      pet:
+        $ref: '#/definitions/PetResponseDTO'
+externalDocs:
+  description: Descubra mais sobre o Curso de Férias
+  url: 'https://github.com/materasystems/curso-de-ferias-2019-spring'
