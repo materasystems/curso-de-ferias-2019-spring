@@ -8,11 +8,11 @@
 
   * **Aula 1**
       * [Slides - aula 1](https://docs.google.com/presentation/d/1DpL6uBw-hp5ox8unehsFdmAvYbtkWVhVYlh0zb3bSNY/edit?usp=sharing)
-    * **Aula 2**
+  * **Aula 2**
       * [Slides - aula 2](https://docs.google.com/presentation/d/14D4vZ0f43wYUHp5pKhfuydlKwps1Mpc02Wn5BqxmnSc/edit#slide=id.g3ea92d5bb8_1_0)
       * Criação do projeto inicial com [Spring Initializr](https://start.spring.io/)
       * [Branch - aula 2]()
-    * **Aula 3**
+  * **Aula 3**
       * JPA
       * Spring Data
       * H2 console
@@ -20,45 +20,45 @@
       * Conexão estabelecida com banco de dados
       * Criação da estrutura do pacote **repository**
       * [Branch - aula 3]()
-    * **Aula 4**
+  * **Aula 4**
       * Contexto do Spring
       * Inversão de controle
       * Injeção de dependências do Spring
       * Criação da estrutura do pacote **business**
       * [Branch - aula 4]()
-    * **Aula 5**
+  * **Aula 5**
       * Criação da estrutura do pacote **service**
       * Criação da estrutura do pacote **dto** com classes de *Response*
       * Criação da estrutura do pacote **controller** com requisições *GET*
       * Anotações do Jackson para formatação do JSON
       * Requisições via Postman
       * [Branch - aula 5]()
-    * **Aula 6**
+  * **Aula 6**
       * Criação das classes de *Request* no pacote **dto**
       * Criação das requisições *POST*, *PUT* e *DELETE*
       * Criação de requisições *GET* mais complexas
       * [Branch - aula 6]()
-    * **Aula 7**
+  * **Aula 7**
       * Tratamento de códigos de retorno HTTP
       * *Exception handler*
       * Criação de validações na camada **business**
       * Validações nos *requests*
       * [Branch - aula 7]()
-    * **Aula 8**
+  * **Aula 8**
       * Testes unitários da camada **controller** com *mock*
       * Testes integrados com banco de dados H2 (bônus)
       * [Branch - aula 8]()
-    * **Aula 9**
+  * **Aula 9**
       * Revisão
       * Criação da estrutura da API de veterinário
-      * *Entity*
-      * *Repository*
-      * *Business*
-      * *Service* e *DTOs*
-      * *Controller*
-      * *Unit tests*
-      * [Branch - aula 9]()
-    * **Aula 10**
+        * *Entity*
+        * *Repository*
+        * *Business*
+        * *Service* e *DTOs*
+        * *Controller*
+        * *Unit tests*
+        * [Branch - aula 9]()
+  * **Aula 10**
       * Finalização da estrutura da API de veterinário
       * Vincular entidade de veterinário à entidade de serviço
       * Dúvidas
