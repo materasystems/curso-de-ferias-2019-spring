@@ -68,7 +68,7 @@
   * ### Especificações técnicas
     * **Linguagem de programação:** Java - jdk1.8.0_152 ou superior
     * **Gerenciador de dependências:** apache-maven-3.0.4
-    * **Spring:** 2.1.1.RELEASE
+    * **Spring Boot:** 2.1.2
     * **Banco de dados:** H2 database - http://localhost:8080/h2
     * **Testes unitários:** Mockito + JUnit
     * **Swagger**: [petstore.yaml](etc/petstore.yaml)
