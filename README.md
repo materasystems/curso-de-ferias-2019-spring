@@ -12,7 +12,7 @@
       * [Slides - aula 2](https://docs.google.com/presentation/d/14D4vZ0f43wYUHp5pKhfuydlKwps1Mpc02Wn5BqxmnSc/edit#slide=id.g3ea92d5bb8_1_0)
       * Criação do projeto inicial com [Spring Initializr](https://start.spring.io/)
       * Criação de beans no contexto do Spring e possíveis problemas
-      * Uso de *annotations* **@Component**, **@Autowired**, **@Primary**, **@Qualifier**
+        * Uso de *annotations* **@Component**, **@Autowired**, **@Primary**, **@Qualifier**
       * [Branch - aula 2]()
   * **Aula 3**
       * Uso de Spring Profiles
