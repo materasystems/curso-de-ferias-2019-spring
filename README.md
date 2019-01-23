@@ -13,7 +13,7 @@
       * Criação do projeto inicial com [Spring Initializr](https://start.spring.io/)
       * Criação de beans no contexto do Spring e possíveis problemas
         * Uso de *annotations* **@Component**, **@Autowired**, **@Primary**, **@Qualifier**
-      * [Branch - aula 2]()
+      * [Branch - aula 2](https://github.com/materasystems/curso-de-ferias-2019-spring/tree/aula_2)
   * **Aula 3**
       * Uso de Spring Profiles
       * JPA
