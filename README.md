@@ -22,7 +22,7 @@
       * Criação da estrutura do pacote **entity** com as entidades do banco de dados
       * Conexão estabelecida com banco de dados
       * Criação da estrutura do pacote **repository**
-      * [Branch - aula 3]()
+      * [Branch - aula 3](https://github.com/materasystems/curso-de-ferias-2019-spring/tree/aula_3)
   * **Aula 4**
       * Contexto do Spring
       * Inversão de controle
