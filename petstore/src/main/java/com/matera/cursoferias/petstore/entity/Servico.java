@@ -5,30 +5,20 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Servico {
+public class Servico extends EntidadeBase {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
 	@Column(length = 500, nullable = false)
 	private String observacao;
 	
 	@Column(name = "data_hora", nullable = false)
 	private LocalDateTime dataHora;
 	
-	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "tipo_servico", nullable = false)
-	private TipoServico tipoServico;
+	private int tipoServico;
 	
 	@Column(nullable = false)
 	private BigDecimal valor;
@@ -36,14 +26,6 @@ public class Servico {
 	@ManyToOne
 	@JoinColumn(name = "id_pet", nullable = false)
 	private Pet pet;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getObservacao() {
 		return observacao;
@@ -62,11 +44,11 @@ public class Servico {
 	}
 
 	public TipoServico getTipoServico() {
-		return tipoServico;
+		return TipoServico.valueOf(tipoServico);
 	}
 
 	public void setTipoServico(TipoServico tipoServico) {
-		this.tipoServico = tipoServico;
+		this.tipoServico = tipoServico.getId();
 	}
 
 	public BigDecimal getValor() {
