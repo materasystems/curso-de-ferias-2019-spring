@@ -11,11 +11,14 @@
   * **Aula 2**
       * [Slides - aula 2](https://docs.google.com/presentation/d/14D4vZ0f43wYUHp5pKhfuydlKwps1Mpc02Wn5BqxmnSc/edit#slide=id.g3ea92d5bb8_1_0)
       * Criação do projeto inicial com [Spring Initializr](https://start.spring.io/)
+      * Contexto do Spring
       * Criação de beans no contexto do Spring e possíveis problemas
         * Uso de *annotations* **@Component**, **@Autowired**, **@Primary**, **@Qualifier**
-      * [Branch - aula 2](https://github.com/materasystems/curso-de-ferias-2019-spring/tree/aula_2)
-  * **Aula 3**
       * Uso de Spring Profiles
+      * [Branch - aula 2](https://github.com/materasystems/curso-de-ferias-2019-spring/tree/aula_2)
+  * **Aula 3**      
+      * Inversão de controle
+      * Injeção de dependências do Spring
       * JPA
       * Spring Data
       * H2 console
@@ -23,10 +26,7 @@
       * Conexão estabelecida com banco de dados
       * Criação da estrutura do pacote **repository**
       * [Branch - aula 3](https://github.com/materasystems/curso-de-ferias-2019-spring/tree/aula_3)
-  * **Aula 4**
-      * Contexto do Spring
-      * Inversão de controle
-      * Injeção de dependências do Spring
+  * **Aula 4**            
       * Criação da estrutura do pacote **business**
       * [Branch - aula 4]()
   * **Aula 5**
