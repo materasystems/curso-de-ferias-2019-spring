@@ -11,14 +11,15 @@
   * **Aula 2**
       * [Slides - aula 2](https://docs.google.com/presentation/d/14D4vZ0f43wYUHp5pKhfuydlKwps1Mpc02Wn5BqxmnSc/edit#slide=id.g3ea92d5bb8_1_0)
       * Criação do projeto inicial com [Spring Initializr](https://start.spring.io/)
-      * Contexto do Spring
+      * Entendendo o contexto do Spring
+        * Inversão de controle
+        * Injeção de dependências
       * Criação de beans no contexto do Spring e possíveis problemas
-        * Uso de *annotations* **@Component**, **@Autowired**, **@Primary**, **@Qualifier**
+        * Uso da interface **CommandLineRunner**
+        * Uso de *annotations* **@Component**, **@Autowired**, **@Primary** e **@Qualifier**
       * Uso de Spring Profiles
       * [Branch - aula 2](https://github.com/materasystems/curso-de-ferias-2019-spring/tree/aula_2)
-  * **Aula 3**      
-      * Inversão de controle
-      * Injeção de dependências do Spring
+  * **Aula 3**
       * JPA
       * Spring Data
       * H2 console
@@ -26,31 +27,34 @@
       * Conexão estabelecida com banco de dados
       * Criação da estrutura do pacote **repository**
       * [Branch - aula 3](https://github.com/materasystems/curso-de-ferias-2019-spring/tree/aula_3)
-  * **Aula 4**            
-      * Criação da estrutura do pacote **business**
-      * [Branch - aula 4]()
+  * **Aula 4**
+      * Refatorando entidades com a criação da classe **EntidadeBase**
+      * Alterações no enum **TipoServico** e seu respectivo mapeamento na classe **Servico** para não gravar o ordinal do enum
+      * Criação da estrutura do pacote **business** usando conceitos de Java Generics
+      * Usando a classe **DataInitializer** para alimentar a base de dados do H2 utilizando as classes do pacote **business**
+      * [Branch - aula 4](https://github.com/materasystems/curso-de-ferias-2019-spring/tree/aula_4)
   * **Aula 5**
-      * Criação da estrutura do pacote **service**
       * Criação da estrutura do pacote **dto** com classes de *Response*
+      * Criação da estrutura do pacote **service** usando conceitos de Java Generics
       * Criação da estrutura do pacote **controller** com requisições *GET*
       * Anotações do Jackson para formatação do JSON
       * Requisições via Postman
-      * [Branch - aula 5]()
+      * [Branch - aula 5](https://github.com/materasystems/curso-de-ferias-2019-spring/tree/aula_5)
   * **Aula 6**
       * Criação das classes de *Request* no pacote **dto**
       * Criação das requisições *POST*, *PUT* e *DELETE*
       * Criação de requisições *GET* mais complexas
-      * [Branch - aula 6]()
+      * [Branch - aula 6](https://github.com/materasystems/curso-de-ferias-2019-spring/tree/aula_6)
   * **Aula 7**
       * Tratamento de códigos de retorno HTTP
       * *Exception handler*
       * Criação de validações na camada **business**
       * Validações nos *requests*
-      * [Branch - aula 7]()
+      * [Branch - aula 7](https://github.com/materasystems/curso-de-ferias-2019-spring/tree/aula_7)
   * **Aula 8**
       * Testes unitários da camada **controller** com *mock*
       * Testes integrados com banco de dados H2 (bônus)
-      * [Branch - aula 8]()
+      * [Branch - aula 8](https://github.com/materasystems/curso-de-ferias-2019-spring/tree/aula_8)
   * **Aula 9**
       * Revisão
       * Criação da estrutura da API de veterinário
@@ -60,12 +64,12 @@
         * *Service* e *DTOs*
         * *Controller*
         * *Unit tests*
-      * [Branch - aula 9]()
+      * [Branch - aula 9](https://github.com/materasystems/curso-de-ferias-2019-spring/tree/aula_9)
   * **Aula 10**
       * Finalização da estrutura da API de veterinário
       * Vincular entidade de veterinário à entidade de serviço
       * Dúvidas
-      * [Branch - aula 10]()
+      * [Branch - aula 10](https://github.com/materasystems/curso-de-ferias-2019-spring/tree/aula_10)
 
 * ## Projeto
   * ### Especificações técnicas
