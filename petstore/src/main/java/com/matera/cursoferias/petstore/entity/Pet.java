@@ -1,11 +1,13 @@
 package com.matera.cursoferias.petstore.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Pet extends EntidadeBase {
@@ -23,6 +25,9 @@ public class Pet extends EntidadeBase {
 	@ManyToOne
 	@JoinColumn(name = "id_especie", nullable = false)
 	private Especie especie;
+	
+	@OneToMany(mappedBy = "pet")
+	private List<Servico> servicos;
 
 	public String getNome() {
 		return nome;
@@ -54,6 +59,14 @@ public class Pet extends EntidadeBase {
 
 	public void setEspecie(Especie especie) {
 		this.especie = especie;
+	}
+
+	public List<Servico> getServicos() {
+		return servicos;
+	}
+
+	public void setServicos(List<Servico> servicos) {
+		this.servicos = servicos;
 	}
 	
 }

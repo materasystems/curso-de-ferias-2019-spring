@@ -6,33 +6,35 @@ import java.time.LocalDateTime;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.matera.cursoferias.petstore.business.ClienteBusiness;
+import com.matera.cursoferias.petstore.business.EspecieBusiness;
+import com.matera.cursoferias.petstore.business.PetBusiness;
+import com.matera.cursoferias.petstore.business.ServicoBusiness;
 import com.matera.cursoferias.petstore.entity.Cliente;
 import com.matera.cursoferias.petstore.entity.Especie;
 import com.matera.cursoferias.petstore.entity.Pet;
 import com.matera.cursoferias.petstore.entity.Servico;
 import com.matera.cursoferias.petstore.entity.TipoServico;
-import com.matera.cursoferias.petstore.repository.ClienteRepository;
-import com.matera.cursoferias.petstore.repository.EspecieRepository;
-import com.matera.cursoferias.petstore.repository.PetRepository;
-import com.matera.cursoferias.petstore.repository.ServicoRepository;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
 
-	private final EspecieRepository especieRepository;
-	private final ClienteRepository clienteRepository;
-	private final PetRepository petRepository;
-	private final ServicoRepository servicoRepository;
+	private final EspecieBusiness especieBusiness;
+	private final ClienteBusiness clienteBusiness;
+	private final PetBusiness petBusiness;
+	private final ServicoBusiness servicoBusiness;
 	
-	public DataInitializer(EspecieRepository especieRepository, ClienteRepository clienteRepository, PetRepository petRepository, ServicoRepository servicoRepository) {
-		this.especieRepository = especieRepository;
-		this.clienteRepository = clienteRepository;
-		this.petRepository = petRepository;
-		this.servicoRepository = servicoRepository;
+	public DataInitializer(EspecieBusiness especieBusiness, ClienteBusiness clienteBusiness, PetBusiness petBusiness, ServicoBusiness servicoBusiness) {
+		this.especieBusiness = especieBusiness;
+		this.clienteBusiness = clienteBusiness;
+		this.petBusiness = petBusiness;
+		this.servicoBusiness = servicoBusiness;
 	}
 
 	@Override
+	@Transactional
 	public void run(String... args) throws Exception {
 		System.out.println("Criação de dados iniciada");
 		
@@ -42,8 +44,8 @@ public class DataInitializer implements CommandLineRunner {
 		especie1.setDescricao("Cachorro");
 		especie2.setDescricao("Gato");
 		
-		especieRepository.save(especie1);
-		especieRepository.save(especie2);
+		especieBusiness.save(especie1);
+		especieBusiness.save(especie2);
 		
 		Cliente cliente1 = new Cliente();
 		Cliente cliente2 = new Cliente();
@@ -51,8 +53,8 @@ public class DataInitializer implements CommandLineRunner {
 		cliente1.setNome("João");
 		cliente2.setNome("Maria");
 		
-		clienteRepository.save(cliente1);
-		clienteRepository.save(cliente2);
+		clienteBusiness.save(cliente1);
+		clienteBusiness.save(cliente2);
 		
 		Pet pet1 = new Pet();
 		Pet pet2 = new Pet();
@@ -79,10 +81,10 @@ public class DataInitializer implements CommandLineRunner {
 		pet4.setEspecie(especie2);
 		pet4.setNome("Nina");
 		
-		petRepository.save(pet1);
-		petRepository.save(pet2);
-		petRepository.save(pet3);
-		petRepository.save(pet4);
+		petBusiness.save(pet1);
+		petBusiness.save(pet2);
+		petBusiness.save(pet3);
+		petBusiness.save(pet4);
 		
 		Servico servico1 = new Servico();
 		Servico servico2 = new Servico();
@@ -113,14 +115,12 @@ public class DataInitializer implements CommandLineRunner {
 		servico4.setTipoServico(TipoServico.VACINACAO);
 		servico4.setValor(new BigDecimal("250.00"));
 		
-		servicoRepository.save(servico1);
-		servicoRepository.save(servico2);
-		servicoRepository.save(servico3);
-		servicoRepository.save(servico4);
+		servicoBusiness.save(servico1);
+		servicoBusiness.save(servico2);
+		servicoBusiness.save(servico3);
+		servicoBusiness.save(servico4);
 		
 		System.out.println("Criação de dados finalizada");
-		
-		servicoRepository.findAll();
 	}
 
 }
