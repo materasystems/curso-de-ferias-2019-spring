@@ -29,7 +29,7 @@
       * [Branch - aula 3](https://github.com/materasystems/curso-de-ferias-2019-spring/tree/aula_3)
   * **Aula 4**
       * Refatorando entidades com a criação da classe **EntidadeBase**
-      * Alterações no enum **TipoServico** e seu respectivo mapeamento na classe **Servico** para não gravar o ordinal do enum
+      * Alterações no enum **TipoServico** e seu mapeamento na classe **Servico** para não gravar o ordinal do enum
       * Criação da estrutura do pacote **business** usando conceitos de Java Generics
       * Usando a classe **DataInitializer** para alimentar a base de dados do H2 utilizando as classes do pacote **business**
       * [Branch - aula 4](https://github.com/materasystems/curso-de-ferias-2019-spring/tree/aula_4)
