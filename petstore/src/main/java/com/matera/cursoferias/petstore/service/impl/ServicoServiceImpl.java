@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.matera.cursoferias.petstore.business.ServicoBusiness;
+import com.matera.cursoferias.petstore.dto.ServicoRequestDTO;
 import com.matera.cursoferias.petstore.dto.ServicoResponseDTO;
 import com.matera.cursoferias.petstore.entity.Servico;
 import com.matera.cursoferias.petstore.service.PetService;
@@ -20,6 +21,12 @@ public class ServicoServiceImpl implements ServicoService {
 	public ServicoServiceImpl(ServicoBusiness servicoBusiness, PetService petService) {
 		this.servicoBusiness = servicoBusiness;
 		this.petService = petService;
+	}
+	
+	@Override
+	public ServicoResponseDTO save(Long id, ServicoRequestDTO requestDTO) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -37,6 +44,18 @@ public class ServicoServiceImpl implements ServicoService {
 		Servico servico = servicoBusiness.findById(id);
 		
 		return converteEntidadeParaResponseDTO(servico);
+	}
+	
+	@Override
+	public void deleteById(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Servico converteRequestDTOParaEntidade(Long id, ServicoRequestDTO requestDTO) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override

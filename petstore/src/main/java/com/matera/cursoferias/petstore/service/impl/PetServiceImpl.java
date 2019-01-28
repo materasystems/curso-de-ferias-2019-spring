@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.matera.cursoferias.petstore.business.PetBusiness;
+import com.matera.cursoferias.petstore.dto.PetRequestDTO;
 import com.matera.cursoferias.petstore.dto.PetResponseDTO;
 import com.matera.cursoferias.petstore.entity.Pet;
 import com.matera.cursoferias.petstore.service.ClienteService;
@@ -24,6 +25,12 @@ public class PetServiceImpl implements PetService {
 		this.clienteService = clienteService;
 		this.especieService = especieService;
 	}
+	
+	@Override
+	public PetResponseDTO save(Long id, PetRequestDTO requestDTO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public List<PetResponseDTO> findAll() {
@@ -40,6 +47,18 @@ public class PetServiceImpl implements PetService {
 		Pet pet = petBusiness.findById(id);
 		
 		return converteEntidadeParaResponseDTO(pet);
+	}
+	
+	@Override
+	public void deleteById(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Pet converteRequestDTOParaEntidade(Long id, PetRequestDTO requestDTO) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
