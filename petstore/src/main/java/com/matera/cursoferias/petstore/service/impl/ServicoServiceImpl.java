@@ -1,5 +1,6 @@
 package com.matera.cursoferias.petstore.service.impl;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import com.matera.cursoferias.petstore.business.ServicoBusiness;
 import com.matera.cursoferias.petstore.dto.ServicoRequestDTO;
 import com.matera.cursoferias.petstore.dto.ServicoResponseDTO;
 import com.matera.cursoferias.petstore.entity.Servico;
+import com.matera.cursoferias.petstore.entity.TipoServico;
 import com.matera.cursoferias.petstore.service.PetService;
 import com.matera.cursoferias.petstore.service.ServicoService;
 
@@ -25,8 +27,11 @@ public class ServicoServiceImpl implements ServicoService {
 	
 	@Override
 	public ServicoResponseDTO save(Long id, ServicoRequestDTO requestDTO) {
-		// TODO Auto-generated method stub
-		return null;
+		Servico servico = converteRequestDTOParaEntidade(id, requestDTO);
+		
+		servico = servicoBusiness.save(servico);
+		
+		return converteEntidadeParaResponseDTO(servico);
 	}
 
 	@Override
@@ -47,15 +52,26 @@ public class ServicoServiceImpl implements ServicoService {
 	}
 	
 	@Override
+	public Servico findEntidadeById(Long id) {
+		return servicoBusiness.findById(id);
+	}
+	
+	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		servicoBusiness.deleteById(id);
 	}
 
 	@Override
 	public Servico converteRequestDTOParaEntidade(Long id, ServicoRequestDTO requestDTO) {
-		// TODO Auto-generated method stub
-		return null;
+		Servico servico = id == null ? new Servico() : servicoBusiness.findById(id);
+		
+		servico.setDataHora(LocalDateTime.now());
+		servico.setObservacao(requestDTO.getObservacao());
+		servico.setPet(petService.findEntidadeById(requestDTO.getIdPet()));
+		servico.setTipoServico(TipoServico.valueOf(requestDTO.getIdTipoServico()));
+		servico.setValor(requestDTO.getValor());
+		
+		return servico;
 	}
 
 	@Override

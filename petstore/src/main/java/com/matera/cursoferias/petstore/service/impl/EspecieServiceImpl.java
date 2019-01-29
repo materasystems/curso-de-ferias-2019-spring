@@ -47,6 +47,11 @@ public class EspecieServiceImpl implements EspecieService {
 	}
 	
 	@Override
+	public Especie findEntidadeById(Long id) {
+		return especieBusiness.findById(id);
+	}
+	
+	@Override
 	public void deleteById(Long id) {
 		especieBusiness.deleteById(id);
 	}

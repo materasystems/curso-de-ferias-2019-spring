@@ -14,18 +14,22 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.matera.cursoferias.petstore.dto.EspecieRequestDTO;
 import com.matera.cursoferias.petstore.dto.EspecieResponseDTO;
+import com.matera.cursoferias.petstore.dto.PetResponseDTO;
 import com.matera.cursoferias.petstore.service.EspecieService;
+import com.matera.cursoferias.petstore.service.PetService;
 
 @RestController
 @RequestMapping("/api/v1/especies")
 public class EspecieController {
 
 	private EspecieService especieService;
+	private PetService petService;
 
-	public EspecieController(EspecieService especieService) {
+	public EspecieController(EspecieService especieService, PetService petService) {
 		this.especieService = especieService;
+		this.petService = petService;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> save(@RequestBody EspecieRequestDTO especieRequestDTO) {
 		EspecieResponseDTO especieResponseDTO = especieService.save(null, especieRequestDTO);
@@ -49,8 +53,6 @@ public class EspecieController {
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<EspecieResponseDTO> findById(@PathVariable("id") Long id) {
-		System.out.println("Iniciando API REST (GET) /api/v1/especies/{id}");
-		
 		EspecieResponseDTO especieResponseDTO = especieService.findById(id);
 		
 		return ResponseEntity.status(HttpStatus.OK)
@@ -59,12 +61,18 @@ public class EspecieController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<EspecieResponseDTO>> findAll() {
-		System.out.println("Iniciando API REST (GET) /api/v1/especies");
-		
 		List<EspecieResponseDTO> especiesResponseDTO = especieService.findAll();
 		
 		return ResponseEntity.status(HttpStatus.OK)
 							 .body(especiesResponseDTO);
+	}
+	
+	@RequestMapping(value = "/{id}/pets", method = RequestMethod.GET)
+	public ResponseEntity<List<PetResponseDTO>> findPets(@PathVariable("id") Long id) {
+		List<PetResponseDTO> pets = petService.findByEspecie_Id(id);
+		
+		return ResponseEntity.status(HttpStatus.OK)
+							 .body(pets);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

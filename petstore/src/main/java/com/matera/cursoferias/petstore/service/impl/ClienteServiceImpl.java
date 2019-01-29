@@ -22,8 +22,11 @@ public class ClienteServiceImpl implements ClienteService {
 	
 	@Override
 	public ClienteResponseDTO save(Long id, ClienteRequestDTO requestDTO) {
-		// TODO Auto-generated method stub
-		return null;
+		Cliente cliente = converteRequestDTOParaEntidade(id, requestDTO);
+		
+		cliente = clienteBusiness.save(cliente);
+		
+		return converteEntidadeParaResponseDTO(cliente);
 	}
 
 	@Override
@@ -44,15 +47,22 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 	
 	@Override
+	public Cliente findEntidadeById(Long id) {
+		return clienteBusiness.findById(id);
+	}
+	
+	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		clienteBusiness.deleteById(id);
 	}
 
 	@Override
 	public Cliente converteRequestDTOParaEntidade(Long id, ClienteRequestDTO requestDTO) {
-		// TODO Auto-generated method stub
-		return null;
+		Cliente cliente = id == null ? new Cliente() : clienteBusiness.findById(id);
+		
+		cliente.setNome(requestDTO.getNome());
+		
+		return cliente;
 	}
 
 	@Override

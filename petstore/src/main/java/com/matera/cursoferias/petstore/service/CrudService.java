@@ -12,6 +12,8 @@ public interface CrudService<RequestDTO, ResponseDTO, Entidade extends EntidadeB
 	
 	ResponseDTO findById(Id id);
 	
+	Entidade findEntidadeById(Id id);
+	
 	void deleteById(Id id);
 	
 	Entidade converteRequestDTOParaEntidade(Id id, RequestDTO requestDTO);

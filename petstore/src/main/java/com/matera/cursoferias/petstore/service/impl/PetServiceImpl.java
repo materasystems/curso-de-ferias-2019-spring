@@ -28,18 +28,18 @@ public class PetServiceImpl implements PetService {
 	
 	@Override
 	public PetResponseDTO save(Long id, PetRequestDTO requestDTO) {
-		// TODO Auto-generated method stub
-		return null;
+		Pet pet = converteRequestDTOParaEntidade(id, requestDTO);
+		
+		pet = petBusiness.save(pet);
+		
+		return converteEntidadeParaResponseDTO(pet);
 	}
 
 	@Override
 	public List<PetResponseDTO> findAll() {
 		List<Pet> pets = petBusiness.findAll();
-		List<PetResponseDTO> retorno = new ArrayList<>();
 		
-		pets.forEach(pet -> retorno.add(converteEntidadeParaResponseDTO(pet)));
-		
-		return retorno;
+		return converteListaEntidadeParaListaResponseDTO(pets);
 	}
 
 	@Override
@@ -50,15 +50,25 @@ public class PetServiceImpl implements PetService {
 	}
 	
 	@Override
+	public Pet findEntidadeById(Long id) {
+		return petBusiness.findById(id);
+	}
+	
+	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		petBusiness.deleteById(id);
 	}
 
 	@Override
 	public Pet converteRequestDTOParaEntidade(Long id, PetRequestDTO requestDTO) {
-		// TODO Auto-generated method stub
-		return null;
+		Pet pet = id == null ? new Pet() : petBusiness.findById(id);
+		
+		pet.setCliente(clienteService.findEntidadeById(requestDTO.getIdCliente()));
+		pet.setDataNascimento(requestDTO.getDataNascimento());
+		pet.setEspecie(especieService.findEntidadeById(requestDTO.getIdEspecie()));
+		pet.setNome(requestDTO.getNome());
+		
+		return pet;
 	}
 
 	@Override
@@ -72,6 +82,21 @@ public class PetServiceImpl implements PetService {
 		petResponseDTO.setNome(entidade.getNome());
 		
 		return petResponseDTO;
+	}
+
+	@Override
+	public List<PetResponseDTO> findByEspecie_Id(Long idEspecie) {
+		List<Pet> especies = petBusiness.findByEspecie_Id(idEspecie);
+		
+		return converteListaEntidadeParaListaResponseDTO(especies);
+	}
+	
+	private List<PetResponseDTO> converteListaEntidadeParaListaResponseDTO(List<Pet> pets) {
+		List<PetResponseDTO> retorno = new ArrayList<>();
+		
+		pets.forEach(pet -> retorno.add(converteEntidadeParaResponseDTO(pet)));
+		
+		return retorno;
 	}
 
 }
