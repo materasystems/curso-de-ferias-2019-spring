@@ -47,4 +47,9 @@ public class PetBusinessImpl implements PetBusiness {
 		return petRepository.findByEspecie_Id(id);
 	}
 
+	@Override
+	public List<Pet> findByCliente_Id(Long id) {
+		return petRepository.findByCliente_Id(id);
+	}
+
 }

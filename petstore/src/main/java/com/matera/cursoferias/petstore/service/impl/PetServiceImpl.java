@@ -86,9 +86,16 @@ public class PetServiceImpl implements PetService {
 
 	@Override
 	public List<PetResponseDTO> findByEspecie_Id(Long idEspecie) {
-		List<Pet> especies = petBusiness.findByEspecie_Id(idEspecie);
+		List<Pet> pets = petBusiness.findByEspecie_Id(idEspecie);
 		
-		return converteListaEntidadeParaListaResponseDTO(especies);
+		return converteListaEntidadeParaListaResponseDTO(pets);
+	}
+	
+	@Override
+	public List<PetResponseDTO> findByCliente_Id(Long idCliente) {
+		List<Pet> pets = petBusiness.findByCliente_Id(idCliente);
+		
+		return converteListaEntidadeParaListaResponseDTO(pets);
 	}
 	
 	private List<PetResponseDTO> converteListaEntidadeParaListaResponseDTO(List<Pet> pets) {

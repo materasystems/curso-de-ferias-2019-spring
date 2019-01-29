@@ -14,16 +14,20 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.matera.cursoferias.petstore.dto.ClienteRequestDTO;
 import com.matera.cursoferias.petstore.dto.ClienteResponseDTO;
+import com.matera.cursoferias.petstore.dto.PetResponseDTO;
 import com.matera.cursoferias.petstore.service.ClienteService;
+import com.matera.cursoferias.petstore.service.PetService;
 
 @RestController
 @RequestMapping("/api/v1/clientes")
 public class ClienteController {
 
 	private ClienteService clienteService;
+	private PetService petService;
 
-	public ClienteController(ClienteService clienteService) {
+	public ClienteController(ClienteService clienteService, PetService petService) {
 		this.clienteService = clienteService;
+		this.petService = petService;
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
@@ -53,6 +57,14 @@ public class ClienteController {
 		
 		return ResponseEntity.status(HttpStatus.OK)
 							 .body(clienteResponseDTO);
+	}
+	
+	@RequestMapping(value = "/{id}/pets", method = RequestMethod.GET)
+	public ResponseEntity<List<PetResponseDTO>> findPets(@PathVariable("id") Long id) {
+		List<PetResponseDTO> pets = petService.findByCliente_Id(id);
+		
+		return ResponseEntity.status(HttpStatus.OK)
+							 .body(pets);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)

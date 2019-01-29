@@ -1,5 +1,6 @@
 package com.matera.cursoferias.petstore.service.impl;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,11 +38,8 @@ public class ServicoServiceImpl implements ServicoService {
 	@Override
 	public List<ServicoResponseDTO> findAll() {
 		List<Servico> servicos = servicoBusiness.findAll();
-		List<ServicoResponseDTO> retorno = new ArrayList<>();
 		
-		servicos.forEach(servico -> retorno.add(converteEntidadeParaResponseDTO(servico)));
-		
-		return retorno;
+		return converteListaEntidadeParaListaResponseDTO(servicos);
 	}
 
 	@Override
@@ -61,6 +59,28 @@ public class ServicoServiceImpl implements ServicoService {
 		servicoBusiness.deleteById(id);
 	}
 
+	@Override
+	public List<ServicoResponseDTO> findByPet_Id(Long idPet) {
+		List<Servico> servicos = servicoBusiness.findByPet_Id(idPet);
+		
+		return converteListaEntidadeParaListaResponseDTO(servicos);
+	}
+	
+	@Override
+	public List<ServicoResponseDTO> findByDataHoraBetween(LocalDate dataInicial, LocalDate dataFinal) {
+		List<Servico> servicos = servicoBusiness.findByDataHoraBetween(dataInicial.atTime(0, 0, 0), dataFinal.atTime(23, 59, 59));
+		
+		return converteListaEntidadeParaListaResponseDTO(servicos);
+	}
+	
+	private List<ServicoResponseDTO> converteListaEntidadeParaListaResponseDTO(List<Servico> servicos) {
+		List<ServicoResponseDTO> retorno = new ArrayList<>();
+		
+		servicos.forEach(servico -> retorno.add(converteEntidadeParaResponseDTO(servico)));
+		
+		return retorno;
+	}
+	
 	@Override
 	public Servico converteRequestDTOParaEntidade(Long id, ServicoRequestDTO requestDTO) {
 		Servico servico = id == null ? new Servico() : servicoBusiness.findById(id);

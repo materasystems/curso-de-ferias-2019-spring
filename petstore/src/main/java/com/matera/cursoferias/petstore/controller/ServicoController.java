@@ -1,14 +1,17 @@
 package com.matera.cursoferias.petstore.controller;
 
 import java.net.URI;
+import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -61,6 +64,15 @@ public class ServicoController {
 		
 		return ResponseEntity.status(HttpStatus.OK)
 							 .body(servicosResponseDTO);
+	}
+	
+	@RequestMapping(value = "/buscaPorData", method = RequestMethod.GET)
+	public ResponseEntity<List<ServicoResponseDTO>> findByData(@RequestParam(name = "dataInicial", required = true) @DateTimeFormat(pattern = "dd/MM/yyyy") LocalDate dataInicial,
+			                                                   @RequestParam(name = "dataFinal", required = true) @DateTimeFormat(pattern = "dd/MM/yyyy") LocalDate dataFinal) {
+		List<ServicoResponseDTO> servicos = servicoService.findByDataHoraBetween(dataInicial, dataFinal);
+		
+		return ResponseEntity.status(HttpStatus.OK)
+							 .body(servicos);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

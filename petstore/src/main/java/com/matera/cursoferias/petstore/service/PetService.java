@@ -10,4 +10,5 @@ public interface PetService extends CrudService<PetRequestDTO, PetResponseDTO, P
 
 	List<PetResponseDTO> findByEspecie_Id(Long idEspecie);
 	
+	List<PetResponseDTO> findByCliente_Id(Long idCliente);
 }
