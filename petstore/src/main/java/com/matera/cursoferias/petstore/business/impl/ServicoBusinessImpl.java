@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.matera.cursoferias.petstore.business.ServicoBusiness;
 import com.matera.cursoferias.petstore.entity.Servico;
+import com.matera.cursoferias.petstore.exception.RegistroNaoEncontradoException;
 import com.matera.cursoferias.petstore.repository.ServicoRepository;
 
 @Component
@@ -35,11 +36,19 @@ public class ServicoBusinessImpl implements ServicoBusiness {
 
 	@Override
 	public Servico findById(Long id) {
-		return servicoRepository.findById(id).orElse(null);
+		Servico servico = servicoRepository.findById(id).orElse(null);
+		
+		if (servico == null) {
+			throw new RegistroNaoEncontradoException(String.format("Serviço %d não encontrado!", id));
+		}
+		
+		return servico; 
 	}
 
 	@Override
 	public void deleteById(Long id) {
+		findById(id);
+		
 		servicoRepository.deleteById(id);
 	}
 

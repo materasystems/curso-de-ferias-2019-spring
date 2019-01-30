@@ -4,6 +4,8 @@ import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +23,7 @@ import com.matera.cursoferias.petstore.service.ServicoService;
 
 @RestController
 @RequestMapping("/api/v1/servicos")
-public class ServicoController {
+public class ServicoController extends ControllerBase {
 
 	private ServicoService servicoService;
 
@@ -30,7 +32,7 @@ public class ServicoController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> save(@RequestBody ServicoRequestDTO servicoRequestDTO) {
+	public ResponseEntity<Void> save(@Valid @RequestBody ServicoRequestDTO servicoRequestDTO) {
 		ServicoResponseDTO servicoResponseDTO = servicoService.save(null, servicoRequestDTO);
 		
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -43,7 +45,7 @@ public class ServicoController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@PathVariable("id") Long id, @RequestBody ServicoRequestDTO servicoRequestDTO) {
+	public ResponseEntity<Void> update(@PathVariable("id") Long id, @Valid @RequestBody ServicoRequestDTO servicoRequestDTO) {
 		servicoService.save(id, servicoRequestDTO);
 		
 		return ResponseEntity.noContent()

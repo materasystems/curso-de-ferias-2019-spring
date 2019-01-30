@@ -3,6 +3,8 @@ package com.matera.cursoferias.petstore.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +22,7 @@ import com.matera.cursoferias.petstore.service.PetService;
 
 @RestController
 @RequestMapping("/api/v1/especies")
-public class EspecieController {
+public class EspecieController extends ControllerBase {
 
 	private EspecieService especieService;
 	private PetService petService;
@@ -31,7 +33,7 @@ public class EspecieController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> save(@RequestBody EspecieRequestDTO especieRequestDTO) {
+	public ResponseEntity<Void> save(@Valid @RequestBody EspecieRequestDTO especieRequestDTO) {
 		EspecieResponseDTO especieResponseDTO = especieService.save(null, especieRequestDTO);
 		
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -44,7 +46,7 @@ public class EspecieController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@PathVariable("id") Long id, @RequestBody EspecieRequestDTO especieRequestDTO) {
+	public ResponseEntity<Void> update(@PathVariable("id") Long id, @Valid @RequestBody EspecieRequestDTO especieRequestDTO) {
 		especieService.save(id, especieRequestDTO);
 		
 		return ResponseEntity.noContent()
