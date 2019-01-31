@@ -43,7 +43,7 @@ public class EspecieBusinessImpl implements EspecieBusiness {
 		Especie especie = especieRepository.findById(id).orElse(null);
 		
 		if (especie == null) {
-			throw new RegistroNaoEncontradoException(String.format("Espécie %d não encontrada", id));
+			throw new RegistroNaoEncontradoException(String.format("Espécie %d não encontrada!", id));
 		}
 		
 		return especie; 
