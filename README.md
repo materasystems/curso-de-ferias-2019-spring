@@ -53,7 +53,7 @@
       * [Branch - aula 7](https://github.com/materasystems/curso-de-ferias-2019-spring/tree/aula_7)
   * **Aula 8**
       * Testes unitários da camada **controller** com *mock*
-      * Testes integrados com banco de dados H2 (bônus)
+      * Testes integrados com banco de dados H2
       * [Branch - aula 8](https://github.com/materasystems/curso-de-ferias-2019-spring/tree/aula_8)
   * **Aula 9**
       * Revisão
@@ -70,6 +70,10 @@
       * Vincular entidade de veterinário à entidade de serviço
       * Dúvidas
       * [Branch - aula 10](https://github.com/materasystems/curso-de-ferias-2019-spring/tree/aula_10)
+  * **Bônus**
+      * Estruturação do projeto em multi-módulos
+      * Criação de aplicação *client* para consumo das *APIs*
+      * [Branch - bonus](https://github.com/materasystems/curso-de-ferias-2019-spring/tree/bonus)
 
 * ## Projeto
   * ### Especificações técnicas
